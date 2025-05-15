@@ -1,0 +1,23 @@
+# This is the assemble block so Vite will package the client extension.
+assemble:
+    - from: vite-build
+      into: static
+
+# We want to expose the custom elements via the JS import maps entry.
+advanced-custom-element-techniques:
+  bareSpecifier: advanced-custom-element-techniques
+  name: Advanced Custom Element Techniques
+  type: jsImportMapsEntry
+  url: assets/index.js
+
+# This is a custom element that uses props.
+acet-props:
+    friendlyURLMapping: acet-props
+    htmlElementName: acet-props
+    instanceable: false
+    name: Advanced Custom Element Techniques - Props
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
