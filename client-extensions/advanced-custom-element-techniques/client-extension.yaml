@@ -14,10 +14,12 @@ advanced-custom-element-techniques:
 acet-idprops:
     friendlyURLMapping: acet-idprops
     htmlElementName: acet-idprops
-    instanceable: false
+    instanceable: true
     name: Advanced Custom Element Techniques - IdProps
     portletCategoryName: category.client-extensions
     type: customElement
     urls:
         - assets/*.js
     useESM: true
+    properties:
+        id: 42
