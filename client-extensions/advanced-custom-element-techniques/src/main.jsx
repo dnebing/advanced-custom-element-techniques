@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import IdProp from './elements/props/Props'
+import IdProp from './elements/props/IdProp'
 
 /*
  * Demonstrate how to use props from the custom fragment here in the element
