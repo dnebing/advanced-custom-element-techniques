@@ -17,6 +17,9 @@
 **/.web_bundle_build
 .gradle
 .idea
+.yarnrc
+package.json
+yarn.lock
 catalina.out
 /bundles
 /gradle-*.properties
