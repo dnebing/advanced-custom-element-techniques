@@ -4,6 +4,8 @@
 **/.project
 **/.sass-cache
 **/.settings
+**/.vscode
+**/.DS_Store
 **/bin
 **/build
 **/build_gradle
@@ -15,6 +17,7 @@
 **/.web_bundle_build
 .gradle
 .idea
+catalina.out
 /bundles
 /gradle-*.properties
 /plugins-sdk/**/classes
