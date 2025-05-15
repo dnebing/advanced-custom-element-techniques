@@ -1,1 +1,14 @@
-// Check GETTING_STARTED.markdown for information regarding usage.
+// Modify the initBundle task to delete the data and osgi/state directories
+// This ensures a clean starting environment
+tasks.named('initBundle').configure {
+    doLast {
+        def dataDir = new File("${rootProject.projectDir}/bundles/data")
+        if (dataDir.exists()) {
+            delete(dataDir)
+        }
+        def stateDir = new File("${rootProject.projectDir}/bundles/osgi/state")
+        if (stateDir.exists()) {
+            delete(stateDir)
+        }
+    }
+}
