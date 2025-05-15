@@ -32,7 +32,7 @@ class ACETIdPropsElement extends HTMLElement {
   }
 }
 
-const ACET_PROPS = 'acet-props';
+const ACET_PROPS = 'acet-idprops';
 
 if (customElements.get(ACET_PROPS)) {
   // eslint-disable-next-line no-console

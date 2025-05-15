@@ -11,11 +11,11 @@ advanced-custom-element-techniques:
   url: assets/index.js
 
 # This is a custom element that uses props.
-acet-props:
-    friendlyURLMapping: acet-props
-    htmlElementName: acet-props
+acet-idprops:
+    friendlyURLMapping: acet-idprops
+    htmlElementName: acet-idprops
     instanceable: false
-    name: Advanced Custom Element Techniques - Props
+    name: Advanced Custom Element Techniques - IdProps
     portletCategoryName: category.client-extensions
     type: customElement
     urls:
