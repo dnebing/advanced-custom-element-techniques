@@ -3,7 +3,7 @@ assemble:
     - from: vite-build
       into: static
 
-# We want to expose the custom elements via the JS import maps entry.
+# We want to import the custom elements into a custom fragment, we need use a JS Import Map.
 advanced-custom-element-techniques:
   bareSpecifier: advanced-custom-element-techniques
   name: Advanced Custom Element Techniques
@@ -14,12 +14,76 @@ advanced-custom-element-techniques:
 acet-idprops:
     friendlyURLMapping: acet-idprops
     htmlElementName: acet-idprops
+    # instanceable controls whether only one (false) or multiple (true) are allowed on a page
     instanceable: true
+    # This is the name that will appear in the page editor panel
     name: Advanced Custom Element Techniques - IdProps
     portletCategoryName: category.client-extensions
     type: customElement
     urls:
         - assets/*.js
     useESM: true
+    # properties can set the default values for the props of the custom element
     properties:
         id: 42
+
+# This is a custom element to show the current mode
+acet-mode-display:
+    friendlyURLMapping: acet-mode-display
+    htmlElementName: acet-mode-display
+    instanceable: true
+    name: Advanced Custom Element Techniques - Mode Display
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
+    properties:
+        isEditMode: false
+
+# This is a custom element to demonstrate how to use Liferay.on() to listen for events
+acet-liferay-on:
+    friendlyURLMapping: acet-liferay-on
+    htmlElementName: acet-liferay-on
+    instanceable: true
+    name: Advanced Custom Element Techniques - Liferay On
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
+
+# This is a custom element to demonstrate how to use Liferay.fire() to send events
+acet-liferay-fire:
+    friendlyURLMapping: acet-liferay-fire
+    htmlElementName: acet-liferay-fire
+    instanceable: true
+    name: Advanced Custom Element Techniques - Liferay Fire
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
+
+acet-single-slot:
+    friendlyURLMapping: acet-single-slot
+    htmlElementName: acet-single-slot
+    instanceable: true
+    name: Advanced Custom Element Techniques - Single Slot
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
+
+acet-mapping-slots:
+    friendlyURLMapping: acet-mapping-slots
+    htmlElementName: acet-mapping-slots
+    instanceable: true
+    name: Advanced Custom Element Techniques - Mapping Slots
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
+
