@@ -24,3 +24,5 @@ This will give you a running Liferay bundle with the custom elements built and d
 Then just follow along in the blog to place the elements on the page, configure them, and use as directed.
 
 Note that the elements presented here are only part of the picture. You really need to follow along in the blog to fully understand the advanced techniques since the elements are just part of the picture.
+
+Use the credentials `acet-admin@acet.com` and password `learn-acet` to log in as an admin. You can find these hard-coded in the `portal-ext.properties` file, although you should of course _never_ do this in any of your real environments.
