@@ -8,6 +8,7 @@
 **/.DS_Store
 **/bin
 **/build
+**/vite-build
 **/build_gradle
 **/dist
 **/node_modules
