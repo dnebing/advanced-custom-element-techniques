@@ -40,12 +40,12 @@ const SlotParserComponent = ({ isEditMode }) => {
     <>
       {isEditMode ? (
         <>
-          <slot name="nameSlot" ref={nameSlotRef}></slot>
+          <slot name="nameSlot" ref={nameSlotRef}></slot><br/>
           <slot name="descSlot" ref={descSlotRef}></slot>
         </>
       ) : (
         <div style={{ visibility: 'hidden' }}>
-          <slot name="nameSlot" ref={nameSlotRef}></slot>
+          <slot name="nameSlot" ref={nameSlotRef}></slot><br />
           <slot name="descSlot" ref={descSlotRef}></slot>
         </div>
       )}
