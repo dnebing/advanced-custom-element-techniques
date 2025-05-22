@@ -1,0 +1,3 @@
+Bundle-Name: liferay-request-attribute-contributor
+Bundle-SymbolicName: com.liferay.sales.demo.context.contributor
+Bundle-Version: 1.0.0
