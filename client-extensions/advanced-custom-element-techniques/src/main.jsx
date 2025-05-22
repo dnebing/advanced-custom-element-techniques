@@ -6,6 +6,7 @@ import LiferayOn from './elements/messaging/LiferayOn'
 import LiferayFire from './elements/messaging/LiferayFire'
 import SingleSlot from './elements/singleslot/SingleSlot'
 import MappingSlots from './elements/mapping/MappingSlots'
+import MappingDisplay from './elements/mapping/MappingDisplay'
 
 /*
  * Demonstrate how to use props from the custom fragment here in the element
@@ -166,12 +167,37 @@ class ACETMappingSlotsElement extends HTMLElement {
   }
 }
 
+class ACETMappingDisplayElement extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+    this._shadow = this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this._root = ReactDOM.createRoot(this._shadow);
+    this._root.render(
+      <React.StrictMode>
+        <MappingDisplay id={this.getAttribute('id')} />
+      </React.StrictMode>
+    );
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+      this._root = null;
+    }
+  }
+}
+
 const ACET_PROPS = 'acet-idprops';
 const ACET_MODE = 'acet-mode-display';
 const ACET_LIFERAY_ON = 'acet-liferay-on';
 const ACET_LIFERAY_FIRE = 'acet-liferay-fire';
 const ACET_SINGLE_SLOT = 'acet-single-slot';
 const ACET_MAPPING_SLOTS = 'acet-mapping-slots';
+const ACET_MAPPING_DISPLAY = 'acet-mapping-display';
 
 if (customElements.get(ACET_PROPS)) {
   // eslint-disable-next-line no-console
@@ -214,3 +240,11 @@ if (customElements.get(ACET_MAPPING_SLOTS)) {
 } else {
   customElements.define(ACET_MAPPING_SLOTS, ACETMappingSlotsElement);
 }
+
+if (customElements.get(ACET_MAPPING_DISPLAY)) {
+  // eslint-disable-next-line no-console
+  console.log(`Skipping registration for <${ACET_MAPPING_DISPLAY}> (already registered)`);
+} else {
+  customElements.define(ACET_MAPPING_DISPLAY, ACETMappingDisplayElement);
+}
+

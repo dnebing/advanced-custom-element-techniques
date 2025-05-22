@@ -87,3 +87,14 @@ acet-mapping-slots:
         - assets/*.js
     useESM: true
 
+acet-mapping-display:
+    friendlyURLMapping: acet-mapping-display
+    htmlElementName: acet-mapping-display
+    instanceable: true
+    name: Advanced Custom Element Techniques - Mapping Display
+    portletCategoryName: category.client-extensions
+    type: customElement 
+    urls:
+        - assets/*.js
+    useESM: true   
+
