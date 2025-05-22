@@ -4,37 +4,48 @@ const MappingSlots = ({ isEditMode, id, bgImageId }) => {
     const isEdit = isEditMode === true || isEditMode === 'true';
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const nameSlotRef = useRef<HTMLSlotElement>(null);
-    const descSlotRef = useRef<HTMLSlotElement>(null);
-    const imageSlotRef = useRef<HTMLSlotElement>(null);
-
+    const nameSlotRef = useRef(null);
+    const descSlotRef = useRef(null);
+    const imageSlotRef = useRef(null);
 
     useEffect(() => {
-        const getSlotContent = (slot, slotName) => {
-            if (!slot) {
-                console.log(`${slotName} slot is not found`);
-                return;
-            }
-            const assigned = slot.assignedElements({ flatten: true });
-            console.log(`${slotName} slot content:`);
-            let content = '';
-            assigned.forEach(el => {
-                console.log(`-`, el.textContent)
+        const getSlotText = (slotEl) => {
+            if (!slotEl) return '';
+            const assigned = slotEl.assignedElements({ flatten: true });
+            return assigned.map(el => el.textContent || '').join(' ').trim();
+        };
 
-                if (content === '') {
-                    content = el.textContent;
-                } else {
-                    content += ` ${el.textContent}`;
-                }
+        const updateStateFromSlots = () => {
+            setName(getSlotText(nameSlotRef.current));
+            setDescription(getSlotText(descSlotRef.current));
+        };
+
+        updateStateFromSlots(); // Initial load
+
+        const observer = new MutationObserver(() => {
+            updateStateFromSlots();
+        });
+
+        const observeSlotElements = (slotEl) => {
+            if (!slotEl) return;
+            const assigned = slotEl.assignedElements({ flatten: true });
+            assigned.forEach(el => {
+                observer.observe(el, {
+                    characterData: true,
+                    childList: true,
+                    subtree: true,
+                });
             });
-            return content;
-          };
-      
-          setName(getSlotContent(nameSlotRef.current, 'nameSlot'));
-          setDescription(getSlotContent(descSlotRef.current, 'descSlot'));
-          getSlotContent(imageSlotRef.current, 'imageSlot');
+        };
+
+        observeSlotElements(nameSlotRef.current);
+        observeSlotElements(descSlotRef.current);
+
+        return () => {
+            observer.disconnect();
+        };
     }, []);
-  
+
     return (
         <div key={id}>
             {isEdit ? (
@@ -50,9 +61,7 @@ const MappingSlots = ({ isEditMode, id, bgImageId }) => {
                         <slot name="descSlot" ref={descSlotRef}></slot><br />
                         <slot name="imageSlot" ref={imageSlotRef}></slot>
                     </div>
-                    <div
-                        data-lfr-background-image-id={bgImageId}
-                    >
+                    <div data-lfr-background-image-id={bgImageId}>
                         <h1>{name}</h1>
                         <p>{description}</p>
                     </div>
@@ -63,6 +72,3 @@ const MappingSlots = ({ isEditMode, id, bgImageId }) => {
 };
 
 export default MappingSlots;
-
-
-
