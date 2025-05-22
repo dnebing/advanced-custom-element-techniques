@@ -5,7 +5,7 @@ import ModeDisplay from './elements/mode/Mode'
 import LiferayOn from './elements/messaging/LiferayOn'
 import LiferayFire from './elements/messaging/LiferayFire'
 import SingleSlot from './elements/singleslot/SingleSlot'
-import MappingSlots from './elements/mapping/MappingSlots'
+import App from './elements/combo/App'
 import MappingDisplay from './elements/mapping/MappingDisplay'
 
 /*
@@ -154,7 +154,7 @@ class ACETMappingSlotsElement extends HTMLElement {
     this._root = ReactDOM.createRoot(this._shadow);
     this._root.render(
       <React.StrictMode>
-        <MappingSlots isEditMode={this.getAttribute('isEditMode')} id={this.getAttribute('id')} key={this.getAttribute('id')} bgImageId={this.getAttribute('bgImageId')} />
+        <App isEditMode={this.getAttribute('isEditMode')} id={this.getAttribute('id')} key={this.getAttribute('id')} />
       </React.StrictMode>
     );
   }
