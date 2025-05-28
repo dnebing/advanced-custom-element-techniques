@@ -15,6 +15,7 @@
 **/node_modules_cache
 **/test-coverage
 **/tmp
+**/.DS_Store
 **/.web_bundle_build
 .gradle
 .idea
