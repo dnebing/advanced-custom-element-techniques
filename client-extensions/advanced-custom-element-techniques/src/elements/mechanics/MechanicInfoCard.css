@@ -1,0 +1,47 @@
+.mechanic-info-card {
+    max-width: 340px;
+    margin: 1rem auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .mechanic-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .overlay-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .overlay-text.with-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
+    z-index: -1;
+  }
+  
+  .overlay-text h3 {
+    margin: 0.25rem 0;
+    font-size: 1.25rem;
+  }
+  
+  .overlay-text p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  

@@ -7,6 +7,9 @@ import LiferayFire from './elements/messaging/LiferayFire'
 import SingleSlot from './elements/singleslot/SingleSlot'
 import App from './elements/combo/App'
 import MappingDisplay from './elements/mapping/MappingDisplay'
+import FeaturedMechanicsList from './featured/FeaturedMechanicsList'
+import { setupShadowRootStyles } from './util/setupShadowRootStyles'
+import mechanicCardStyles from './featured/MechanicCard.css?inline'; // 👈 Import inline CSS string
 
 /*
  * Demonstrate how to use props from the custom fragment here in the element
@@ -191,6 +194,32 @@ class ACETMappingDisplayElement extends HTMLElement {
   }
 }
 
+class ACETFeaturedMechanicsElement extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+    this._shadow = this.attachShadow({ mode: 'open' });
+
+		setupShadowRootStyles(this._shadow, [mechanicCardStyles]);
+  }
+
+  connectedCallback() {
+    this._root = ReactDOM.createRoot(this._shadow);
+    this._root.render(
+      <React.StrictMode>
+        <FeaturedMechanicsList isEditMode={this.getAttribute('isEditMode')} />
+      </React.StrictMode>
+    );
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+      this._root = null;
+    }
+  }
+}
+
 const ACET_PROPS = 'acet-idprops';
 const ACET_MODE = 'acet-mode-display';
 const ACET_LIFERAY_ON = 'acet-liferay-on';
@@ -198,6 +227,8 @@ const ACET_LIFERAY_FIRE = 'acet-liferay-fire';
 const ACET_SINGLE_SLOT = 'acet-single-slot';
 const ACET_MAPPING_SLOTS = 'acet-mapping-slots';
 const ACET_MAPPING_DISPLAY = 'acet-mapping-display';
+const ACET_FEATURED_MECHANICS = 'acet-featured-mechanics';
+const ACET_FEATURED_MECHANIC = 'acet-featured-mechanic';
 
 if (customElements.get(ACET_PROPS)) {
   // eslint-disable-next-line no-console
@@ -246,5 +277,12 @@ if (customElements.get(ACET_MAPPING_DISPLAY)) {
   console.log(`Skipping registration for <${ACET_MAPPING_DISPLAY}> (already registered)`);
 } else {
   customElements.define(ACET_MAPPING_DISPLAY, ACETMappingDisplayElement);
+}
+
+if (customElements.get(ACET_FEATURED_MECHANICS)) {
+  // eslint-disable-next-line no-console
+  console.log(`Skipping registration for <${ACET_FEATURED_MECHANICS}> (already registered)`);
+} else {
+  customElements.define(ACET_FEATURED_MECHANICS, ACETFeaturedMechanicsElement);
 }
 

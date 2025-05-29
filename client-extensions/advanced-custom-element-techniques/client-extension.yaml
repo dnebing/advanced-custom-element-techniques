@@ -98,3 +98,16 @@ acet-mapping-display:
         - assets/*.js
     useESM: true   
 
+acet-featured-mechanics:
+    friendlyURLMapping: acet-featured-mechanics
+    htmlElementName: acet-featured-mechanics
+    instanceable: true
+    name: Advanced Custom Element Techniques - Featured Mechanics
+    portletCategoryName: category.client-extensions
+    type: customElement 
+    urls:
+        - assets/*.js
+    useESM: true   
+    properties:
+        isEditMode: false
+
