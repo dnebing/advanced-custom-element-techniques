@@ -111,3 +111,13 @@ acet-featured-mechanics:
     properties:
         isEditMode: false
 
+acet-slot-with-router:
+    friendlyURLMapping: acet-slot-with-router
+    htmlElementName: acet-slot-with-router
+    instanceable: true
+    name: Advanced Custom Element Techniques - Slot With Router
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
