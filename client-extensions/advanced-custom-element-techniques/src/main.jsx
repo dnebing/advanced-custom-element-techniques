@@ -228,7 +228,6 @@ const ACET_SINGLE_SLOT = 'acet-single-slot';
 const ACET_MAPPING_SLOTS = 'acet-mapping-slots';
 const ACET_MAPPING_DISPLAY = 'acet-mapping-display';
 const ACET_FEATURED_MECHANICS = 'acet-featured-mechanics';
-const ACET_FEATURED_MECHANIC = 'acet-featured-mechanic';
 
 if (customElements.get(ACET_PROPS)) {
   // eslint-disable-next-line no-console
