@@ -1,0 +1,8 @@
+assemble:
+    -   from: assets
+        into: static
+liferay-routing-js-import-maps-entry:
+    bareSpecifier: liferay-routing
+    name: Liferay Routing JS Import Maps Entry
+    type: jsImportMapsEntry
+    url: liferay-routing.js

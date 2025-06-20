@@ -1,0 +1,25 @@
+# This is the assemble block so Vite will package the client extension.
+assemble:
+    - from: vite-build
+      into: static
+
+# We want to import the custom elements into a custom fragment, we need use a JS Import Map.
+liferay-react-router-test:
+  bareSpecifier: liferay-react-router-test
+  name: Liferay React Router Test
+  type: jsImportMapsEntry
+  url: assets/index.js
+
+# This is a custom element that uses props.
+liferay-react-router-testing:
+    friendlyURLMapping: liferay-react-router-testing
+    htmlElementName: liferay-react-router-testing
+    # instanceable controls whether only one (false) or multiple (true) are allowed on a page
+    instanceable: true
+    # This is the name that will appear in the page editor panel
+    name: Liferay React Router Testing
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true
