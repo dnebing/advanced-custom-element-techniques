@@ -111,3 +111,13 @@ acet-featured-mechanics:
     properties:
         isEditMode: false
 
+acet-i18n-demo:
+    friendlyURLMapping: acet-i18n-demo
+    htmlElementName: acet-i18n-demo
+    instanceable: true
+    name: Advanced Custom Element Techniques - I18N Demo
+    portletCategoryName: category.client-extensions
+    type: customElement
+    urls:
+        - assets/*.js
+    useESM: true

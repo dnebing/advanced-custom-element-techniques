@@ -1,4 +1,9 @@
 const Liferay = window.Liferay || {
+	Language: {
+		get: (key) => {
+			return key;
+		},
+	},
 	OAuth2: {
 		getAuthorizeURL: () => '',
 		getBuiltInRedirectURL: () => '',

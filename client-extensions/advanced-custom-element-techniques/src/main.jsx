@@ -10,6 +10,7 @@ import MappingDisplay from './elements/mapping/MappingDisplay'
 import FeaturedMechanicsList from './featured/FeaturedMechanicsList'
 import { setupShadowRootStyles } from './util/setupShadowRootStyles'
 import mechanicCardStyles from './featured/MechanicCard.css?inline'; // 👈 Import inline CSS string
+import I18NDemoComponents from './elements/i18n/I18NDemoComponents';
 
 /*
  * Demonstrate how to use props from the custom fragment here in the element
@@ -220,6 +221,32 @@ class ACETFeaturedMechanicsElement extends HTMLElement {
   }
 }
 
+class ACETI18NDemoElement extends HTMLElement {
+  constructor() {
+    super();
+    this._root = null;
+    this._shadow = this.attachShadow({ mode: 'open' });
+
+		setupShadowRootStyles(this._shadow, [mechanicCardStyles]);
+  }
+
+  connectedCallback() {
+    this._root = ReactDOM.createRoot(this._shadow);
+    this._root.render(
+      <React.StrictMode>
+        <I18NDemoComponents />
+      </React.StrictMode>
+    );
+  }
+
+  disconnectedCallback() {
+    if (this._root) {
+      this._root.unmount();
+      this._root = null;
+    }
+  }
+}
+
 const ACET_PROPS = 'acet-idprops';
 const ACET_MODE = 'acet-mode-display';
 const ACET_LIFERAY_ON = 'acet-liferay-on';
@@ -228,6 +255,7 @@ const ACET_SINGLE_SLOT = 'acet-single-slot';
 const ACET_MAPPING_SLOTS = 'acet-mapping-slots';
 const ACET_MAPPING_DISPLAY = 'acet-mapping-display';
 const ACET_FEATURED_MECHANICS = 'acet-featured-mechanics';
+const ACET_I18N_DEMO = 'acet-i18n-demo';
 
 if (customElements.get(ACET_PROPS)) {
   // eslint-disable-next-line no-console
@@ -285,3 +313,9 @@ if (customElements.get(ACET_FEATURED_MECHANICS)) {
   customElements.define(ACET_FEATURED_MECHANICS, ACETFeaturedMechanicsElement);
 }
 
+if (customElements.get(ACET_I18N_DEMO)) {
+  // eslint-disable-next-line no-console
+  console.log(`Skipping registration for <${ACET_I18N_DEMO}> (already registered)`);
+} else {
+  customElements.define(ACET_I18N_DEMO, ACETI18NDemoElement);
+}
